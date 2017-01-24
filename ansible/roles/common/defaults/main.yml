@@ -1,0 +1,20 @@
+hosts: [
+  { host_ip: "192.168.57.27", host_name: "cd"},
+  { host_ip: "192.168.57.31", host_name: "prod"},
+  { host_ip: "192.168.57.32", host_name: "logging"},
+  { host_ip: "192.168.57.41", host_name: "serv-disc-01"},
+  { host_ip: "192.168.57.42", host_name: "serv-disc-02"},
+  { host_ip: "192.168.57.43", host_name: "serv-disc-03"},
+  { host_ip: "192.168.57.40", host_name: "proxy"},
+  { host_ip: "192.168.57.50", host_name: "swarm-master"},
+  { host_ip: "192.168.57.51", host_name: "swarm-node-1"},
+  { host_ip: "192.168.57.52", host_name: "swarm-node-2"},
+]
+
+obsolete_services:
+  - puppet
+  - chef-client
+
+centos_files: [
+     { src: "centos.sshd_config", dest: "/etc/ssh/sshd_config" },
+  ]
