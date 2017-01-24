@@ -1,3 +1,8 @@
+
+# 在設定service-disc01 (192.168.57.41 )  
+# service-disc02 (192.168.57.42 )  
+# service-disc03 (192.168.57.43 )  etcd 時需要改變
+# centos的{{ ansible_eth1.ipv4.address }}確實可以動態抓到所登入機器的ip ,Ubuntu無法使用，只能用 "{{ facter_ipaddress_eth1 }}"是否能使用
 ip: "{{ facter_ipaddress_eth1 }}"
 consul_extra: ""
 proxy_url: http://{{ facter_ipaddress_eth1 }}
@@ -8,6 +13,8 @@ jenkins_ip: 10.100.198.200
 debian_version: trusty
 docker_cfg: docker.cfg
 docker_cfg_dest: /etc/default/docker
+centos_docker_cfg: centos-docker.cfg
+centos_docker_cfg_dest: /lib/systemd/system/docker.service
 elk_ip: 10.100.198.202
-jenkins_version: 1.642.4
+jenkins_version: 1.651.3
 registry_host_dir: /vagrant/registry
