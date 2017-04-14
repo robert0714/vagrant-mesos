@@ -10,4 +10,5 @@
     enabled: no
     state: stopped
   with_items: "{{ master_services }}"
+  ignore_errors: yes
   tags: [mesos]
