@@ -19,11 +19,12 @@ Vagrant.configure(2) do |config|
   end  
   (1..4).each do |i|
     config.vm.define "mesos-#{i}" do |d|
-      d.vm.box = "ubuntu/trusty64"
+      d.vm.box = "bento/centos-7.3"
+ #     d.vm.box = "ubuntu/trusty64"
       d.vm.hostname = "mesos-#{i}"
       d.vm.network "private_network", ip: "10.100.97.20#{i}"     
       d.vm.provider "virtualbox" do |v|
-        v.memory = 1536
+        v.memory = 2536
       end
     end
   end
