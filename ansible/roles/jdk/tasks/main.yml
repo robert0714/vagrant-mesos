@@ -1,0 +1,28 @@
+#
+# directories
+#
+
+- name: set java installation directory on Debian platforms
+  set_fact:
+    java_install_dir: /usr/lib/jvm
+    java_default_link_name: default-java
+  when: ansible_os_family == "Debian"
+
+- name: set java installation directory on Mac OS X
+  set_fact:
+    # The Java installation directory on Mac OS X is determined by the package itself.
+    java_install_dir: /no_such_directory
+    java_default_link_name: default
+  when: ansible_os_family == "Darwin"
+
+- name: set java installation directory on non-Debian platforms
+  set_fact:
+    java_install_dir: /usr/java
+    java_default_link_name: default
+  when: ansible_os_family != "Debian" and ansible_os_family != "Darwin"
+  
+- include: debian.yml
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- include: centos.yml
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

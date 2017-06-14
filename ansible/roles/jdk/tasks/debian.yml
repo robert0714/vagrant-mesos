@@ -1,0 +1,31 @@
+- name: python-software-properties
+  apt:
+    name: python-software-properties
+    state: latest
+    force: yes
+  tags: [jdk]
+
+- name: add-apt-repository ppa:webupd8team/java  
+  apt_repository:
+    repo: ppa:webupd8team/java
+    update_cache: yes
+    state: present
+  tags: [jdk]
+
+- name: set licence selected
+  shell: /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+  sudo: yes
+  tags: [jdk]
+
+- name: set licence seen
+  shell: /bin/echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections
+  sudo: yes
+  tags: [jdk]
+  
+- name: Oracle java8 is present
+  apt:
+    name: oracle-java8-installer
+    state: latest
+    force: yes
+  tags: [jdk]
+
