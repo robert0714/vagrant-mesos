@@ -18,6 +18,20 @@
   with_items: "{{ packages }}"
   tags: [mesos]
 
+- name:  Explicity update systemd to this patched version.
+  yum:
+    name: systemd
+    state: latest
+  tags: [mesos]
+
+- name: Install essential development tools.
+  shell: sudo yum groupinstall -y "Development Tools"
+  tags: [mesos]
+
+- name: Install other Mesos dependencies.
+  shell: sudo yum install -y apache-maven python-devel python-virtualenv java-1.8.0-openjdk-devel zlib-devel libcurl-devel openssl-devel cyrus-sasl-devel cyrus-sasl-md5 apr-devel subversion-devel apr-util-devel
+  tags: [mesos]
+
 - include: master.yml
   when: mesos_master is defined
 

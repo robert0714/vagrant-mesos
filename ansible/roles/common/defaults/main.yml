@@ -2,7 +2,8 @@ hosts: [
   { host_ip: "10.100.198.200", host_name: "cd"},
   { host_ip: "10.100.197.201", host_name: "mesos-1"},
   { host_ip: "10.100.197.202", host_name: "mesos-2"},
-  { host_ip: "10.100.197.203", host_name: "mesos-3"}
+  { host_ip: "10.100.197.203", host_name: "mesos-3"},
+  { host_ip: "10.100.197.204", host_name: "mesos-4"}
 ]
 
 obsolete_services:

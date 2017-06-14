@@ -37,7 +37,7 @@
 - name: docker-py is present
   pip:
     name: docker-py
-    version: 1.10.5
+    version: 1.10.6
     state: present
   tags: [docker]
 
@@ -68,7 +68,8 @@
   tags: [docker]
 
 - name: DockerUI is running
-  docker:
+  docker_container:
+    restart_policy: always
     image: uifd/ui-for-docker
     name: dockerui
     ports: 9000:9000
